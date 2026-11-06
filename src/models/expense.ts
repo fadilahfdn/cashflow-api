@@ -8,4 +8,4 @@ export interface Expense {
 }
 
 // database sementara
-export const expense: Expense[] = [];
+export const expenses: Expense[] = [];
