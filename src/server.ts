@@ -1,5 +1,5 @@
 // memanggil framework Express
-const express = require('express');
+import express from 'express';
 const app = express();
 
 // mengambil port dari sistem host (Render/AWS) atau default
