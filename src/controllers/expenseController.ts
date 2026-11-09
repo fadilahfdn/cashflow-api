@@ -25,3 +25,40 @@ export const addExpense = (req: Request, res: Response) => {
         data: newExpense
     });
 };
+
+// PUT: mengubah pengeluaran
+export const updateExpence = (req: Request, res: Response): void => {
+    const { id } = req.params;
+    const { title, amount, category } = req.body;
+    const index = expenses.findIndex(exp => exp.id === id);
+
+    if (index === -1) {
+        res.status(404).json({ message: "Catatan pengeluaran tidak ditemukan!"});
+    }
+
+    expenses[index] = {
+        ...expenses[index], // pertahankan data lama (tgl dan Id)
+        title: title || expenses[index].title,
+        amount: amount || expenses[index].amount,
+        category: category || expenses[index].category
+    }
+
+    res.status(200).json({
+        message: "Pengeluaran berhasil diperbarui!",
+        data: expenses[index]
+    });
+}
+
+// DELETE: menghapus pengeluaran
+export const deleteExpense = (req: Request, res: Response): void => {
+    const { id } = req.params;
+    const index = expenses.findIndex(exp => exp.id === id);
+
+    if (index === -1) {
+        res.status(404).json({ message: "Catatan pengeluaran tidak ditemukan!" });
+        return;
+    }
+
+    expenses.splice(index, 1); // membuang catatan
+    res.status(200).json({ message: "Pengeluaran berhasil dihapus!" });
+}
