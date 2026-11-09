@@ -1,9 +1,12 @@
-// memanggil framework Express
 import express from 'express';
-const app = express();
+import expenseRoutes from './routes/expenseRoutes';
 
-// mengambil port dari sistem host (Render/AWS) atau default
+const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json()); // penerjemah format JSON dari FE
+
+app.use('/api/expenses', expenseRoutes);
 
 app.get('/', (req, res) => {
     res.json({message: "Selamat datang di API Dompet Mahasigma!"});
