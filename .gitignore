@@ -4,5 +4,5 @@ node_modules
 .claude
 .cursor
 .devin
-prisma/*.db
-prisma/*.db-journal
+*.db
+*.db-journal
