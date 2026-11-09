@@ -1,0 +1,17 @@
+// konfigurasi mesin database
+generator client {
+  provider = "prisma-client-js"
+}
+
+// pengaturan jenis database yang dipakai (SQLite lokal)
+datasource db {
+  provider = "sqlite"
+}
+
+model Expense {
+    id  String  @id @default(uuid())
+    title   String
+    amount  Int
+    category    String
+    date    DateTime    @default(now())
+}
