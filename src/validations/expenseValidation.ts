@@ -13,7 +13,7 @@ export const createExpenseSchema = z.object({
             .int('Nominal harus berupa bilangan bulat')
             .positive('Nominal pengeluaran harus lebih besar dari 0'),
         category: z
-            .string({ error: 'Kategori wajib diisi' })
+            .string({ error: 'Kategori wajib diisi dan harus berupa teks' })
             .trim()
             .min(2, 'Kategori minimal terdiri dari 2 karakter')
             .max(50, 'Kategori maksimal 50 karakter'),
